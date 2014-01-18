@@ -12,11 +12,13 @@ struct TodotxtTask {
 
 typedef *TodotxtTask TodotxtTasks;
 
-TodotxtTask parse_task(char* todo, int id) {
+TodotxtTask parse_task(const char* todo, int id) {
     TodotxtTask task = new TodotxtTask;
 
+    task.id = id;
     task.raw_todo = strdup(todo);
 
+    return task;
 }
 
 #endif
