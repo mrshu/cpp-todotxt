@@ -1,24 +1,16 @@
 #ifndef TODOTXT_H
 #define TODOTXT_H
 
-#include <stdlib.h>
+#include <cstdlib>
+#include <cstring>
 
-struct TodotxtTask {
+typedef struct TodotxtTask {
     int id;
     char priority;
     bool finished;
     char* raw_todo;
-};
+} TodotxtTask;
 
-typedef *TodotxtTask TodotxtTasks;
-
-TodotxtTask parse_task(const char* todo, int id) {
-    TodotxtTask task = new TodotxtTask;
-
-    task.id = id;
-    task.raw_todo = strdup(todo);
-
-    return task;
-}
+typedef TodotxtTask* TodotxtTasks;
 
 #endif
