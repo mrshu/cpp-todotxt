@@ -13,4 +13,5 @@ typedef struct TodotxtTask {
 
 typedef TodotxtTask* TodotxtTasks;
 
+TodotxtTask todotxt_parse_task(const char* todo, int id);
 #endif
