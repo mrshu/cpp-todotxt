@@ -3,6 +3,7 @@
 
 #include <cstdlib>
 #include <cstring>
+#include <cctype>
 
 typedef struct TodotxtTask {
     int id;

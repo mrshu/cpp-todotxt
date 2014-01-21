@@ -4,7 +4,7 @@ CC=g++ -g -Wall -lm
 	$(CC) -c -o $@ $< $(OFLAGS)
 
 test: test.cpp todotxt.o
-	$(CC) todotxt.o example.cpp -o example
+	$(CC) todotxt.o test.cpp -o test
 
 clean:
 	rm -f *.o

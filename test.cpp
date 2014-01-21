@@ -20,6 +20,7 @@ TEST simple_task_parse_with_priority(void) {
     TodotxtTask task = todotxt_parse_task("(A) this is a very important task", 1);
     ASSERT_EQ(task.id, 1);
     ASSERT_STR_EQ(task.raw_todo, "(A) this is a very important task");
+    ASSERT_EQ(task.priority, 'A');
     PASS();
 }
 
