@@ -16,8 +16,16 @@ TEST simple_task_parse(void) {
     PASS();
 }
 
+TEST simple_task_parse_with_priority(void) {
+    TodotxtTask task = todotxt_parse_task("(A) this is a very important task", 1);
+    ASSERT_EQ(task.id, 1);
+    ASSERT_STR_EQ(task.raw_todo, "(A) this is a very important task");
+    PASS();
+}
+
 SUITE(suite) {
     RUN_TEST(simple_task_parse);
+    RUN_TEST(simple_task_parse_with_priority);
 }
 
 GREATEST_MAIN_DEFS();
