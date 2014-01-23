@@ -12,6 +12,7 @@ SUITE(suite);
 TEST simple_task_parse(void) {
     TodotxtTask task = todotxt_parse_task("this is an important task", 1);
     ASSERT_EQ(task.id, 1);
+    ASSERT_EQ(task.finished, false);
     ASSERT_STR_EQ(task.raw_todo, "this is an important task");
     PASS();
 }
@@ -19,6 +20,7 @@ TEST simple_task_parse(void) {
 TEST simple_task_parse_with_priority(void) {
     TodotxtTask task = todotxt_parse_task("(A) this is a very important task", 1);
     ASSERT_EQ(task.id, 1);
+    ASSERT_EQ(task.finished, false);
     ASSERT_STR_EQ(task.raw_todo, "(A) this is a very important task");
     ASSERT_EQ(task.priority, 'A');
     PASS();
