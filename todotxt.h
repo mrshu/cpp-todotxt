@@ -10,6 +10,7 @@ typedef struct TodotxtTask {
     char priority;
     bool finished;
     char* raw_todo;
+    char* todo;
 } TodotxtTask;
 
 typedef TodotxtTask* TodotxtTasks;
