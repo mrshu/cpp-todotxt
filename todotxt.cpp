@@ -12,6 +12,8 @@ TodotxtTask todotxt_parse_task(const char* todo, int id) {
         if (isupper(todo[1]) &&
             (todo[0] == '(' && todo[2] == ')' && todo[3] == ' ')) {
             task.priority = todo[1];
+        } else {
+            task.priority = '^';
         }
     }
 

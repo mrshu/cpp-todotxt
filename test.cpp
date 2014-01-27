@@ -35,10 +35,20 @@ TEST simple_task_parse_with_wrong_priority(void) {
     PASS();
 }
 
+TEST simple_task_parse_without_priority(void) {
+    TodotxtTask task = todotxt_parse_task("(a)task without a priority", 1);
+    ASSERT_EQ(task.id, 1);
+    ASSERT_EQ(task.finished, false);
+    ASSERT_STR_EQ(task.raw_todo, "(a)task without a priority");
+    ASSERT_EQ(task.priority, '^');
+    PASS();
+}
+
 SUITE(suite) {
     RUN_TEST(simple_task_parse);
     RUN_TEST(simple_task_parse_with_priority);
     RUN_TEST(simple_task_parse_with_wrong_priority);
+    RUN_TEST(simple_task_parse_without_priority);
 }
 
 GREATEST_MAIN_DEFS();
