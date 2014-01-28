@@ -14,6 +14,7 @@ TEST simple_task_parse(void) {
     ASSERT_EQ(task.id, 1);
     ASSERT_EQ(task.finished, false);
     ASSERT_STR_EQ(task.raw_todo, "this is an important task");
+    ASSERT_STR_EQ(task.todo, "this is an important task");
     PASS();
 }
 
@@ -22,6 +23,7 @@ TEST simple_task_parse_with_priority(void) {
     ASSERT_EQ(task.id, 1);
     ASSERT_EQ(task.finished, false);
     ASSERT_STR_EQ(task.raw_todo, "(A) this is a very important task");
+    ASSERT_STR_EQ(task.todo, "this is a very important task");
     ASSERT_EQ(task.priority, 'A');
     PASS();
 }
@@ -31,6 +33,7 @@ TEST simple_task_parse_with_wrong_priority(void) {
     ASSERT_EQ(task.id, 1);
     ASSERT_EQ(task.finished, false);
     ASSERT_STR_EQ(task.raw_todo, "(a) this is a very important task");
+    ASSERT_STR_EQ(task.todo, "(a) this is a very important task");
     ASSERT_FALSE(task.priority == 'a');
     PASS();
 }
@@ -40,6 +43,7 @@ TEST simple_task_parse_without_priority(void) {
     ASSERT_EQ(task.id, 1);
     ASSERT_EQ(task.finished, false);
     ASSERT_STR_EQ(task.raw_todo, "(a)task without a priority");
+    ASSERT_STR_EQ(task.todo, "(a)task without a priority");
     ASSERT_EQ(task.priority, '^');
     PASS();
 }
