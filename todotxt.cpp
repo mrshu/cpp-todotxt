@@ -7,18 +7,20 @@ TodotxtTask todotxt_parse_task(const char* todo, int id) {
     task.finished = false;
     task.raw_todo = strdup(todo);
 
-    //int clean_todo_start = 0;
-    if (strlen(todo) > 2) {
+    int clean_todo_start = 0;
+    if (strlen(todo) > 4) {
         if (isupper(todo[1]) &&
             (todo[0] == '(' && todo[2] == ')' && todo[3] == ' ')) {
             task.priority = todo[1];
+            clean_todo_start = 4;
         } else {
             task.priority = '^';
         }
     }
 
-    //task.todo = new char[strlen(todo) - clean_todo_start];
-
+    int todo_len = strlen(todo) - clean_todo_start;
+    task.todo = new char[todo_len + 1];
+    memcpy(task.todo, (todo + clean_todo_start), todo_len);
 
     return task;
 }
