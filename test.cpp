@@ -15,6 +15,10 @@ TEST simple_task_parse(void) {
     ASSERT_EQ(task.finished, false);
     ASSERT_STR_EQ(task.raw_todo, "this is an important task");
     ASSERT_STR_EQ(task.todo, "this is an important task");
+
+    delete task.raw_todo;
+    delete task.todo;
+
     PASS();
 }
 
