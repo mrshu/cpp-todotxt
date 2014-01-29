@@ -18,6 +18,15 @@ TEST simple_task_parse(void) {
     PASS();
 }
 
+TEST simple_finished_task_parse(void) {
+    TodotxtTask task = todotxt_parse_task("x this is an important task", 1);
+    ASSERT_EQ(task.id, 1);
+    ASSERT_EQ(task.finished, true);
+    ASSERT_STR_EQ(task.raw_todo, "x this is an important task");
+    ASSERT_STR_EQ(task.todo, "this is an important task");
+    PASS();
+}
+
 TEST simple_task_parse_with_priority(void) {
     TodotxtTask task = todotxt_parse_task("(A) this is a very important task", 1);
     ASSERT_EQ(task.id, 1);
@@ -50,6 +59,7 @@ TEST simple_task_parse_without_priority(void) {
 
 SUITE(suite) {
     RUN_TEST(simple_task_parse);
+    RUN_TEST(simple_finished_task_parse);
     RUN_TEST(simple_task_parse_with_priority);
     RUN_TEST(simple_task_parse_with_wrong_priority);
     RUN_TEST(simple_task_parse_without_priority);

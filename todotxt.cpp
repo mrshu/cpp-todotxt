@@ -9,9 +9,9 @@ TodotxtTask todotxt_parse_task(const char* todo, int id) {
     int clean_todo_start = 0;
 
     if (strlen(todo) > 3) {
-        if (todo[0] == 'x' && todo[1] == ' ' && todo[2] == ' ') {
+        if (todo[0] == 'x' && todo[1] == ' ' && todo[2] != ' ') {
             task.finished = true;
-            clean_todo_start += 3;
+            clean_todo_start += 2;
         } else {
             task.finished = false;
         }
