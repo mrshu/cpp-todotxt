@@ -25,7 +25,7 @@ TodotxtTask todotxt_parse_task(const char* todo, int id) {
         }
     }
 
-    int todo_len = strlen(todo);
+    int todo_len = strlen(todo) + 1;
     task.todo = new char[todo_len + 1];
     memcpy(task.todo, todo, todo_len);
 
