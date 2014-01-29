@@ -31,3 +31,9 @@ TodotxtTask todotxt_parse_task(const char* todo, int id) {
 
     return task;
 }
+
+void todotxt_free_task(TodotxtTask *task) {
+    delete task->raw_todo;
+    delete task->todo;
+    delete task;
+}
