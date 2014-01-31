@@ -37,6 +37,14 @@ TodotxtTask todotxt_parse_task(const char* todo, int id) {
     return task;
 }
 
+time_t todotxt_build_time(char* time)
+{
+    struct tm Tm;
+    memset(&Tm, 0, sizeof(Tm));
+
+    return mktime(&Tm);
+}
+
 void todotxt_free_task(TodotxtTask *task) {
     delete task->raw_todo;
     delete task->todo;
