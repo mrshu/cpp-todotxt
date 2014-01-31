@@ -41,7 +41,10 @@ time_t todotxt_build_time(char* time) {
     struct tm Tm;
     memset(&Tm, 0, sizeof(Tm));
 
-    sscanf("%d-%d-%d", &Tm.tm_year, &Tm.tm_mon, &Tm.tm_mday);
+    sscanf(time, "%d-%d-%d", &Tm.tm_year, &Tm.tm_mon, &Tm.tm_mday);
+
+    Tm.tm_year -= 1900;
+    Tm.tm_mon -= 1;
 
     return mktime(&Tm);
 }

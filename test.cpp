@@ -91,6 +91,15 @@ TEST simple_task_parse_without_priority(void) {
     PASS();
 }
 
+TEST todotxt_build_time_test(void) {
+    char time[] = "2013-12-30";
+    time_t t = todotxt_build_time(time);
+
+    printf("%ld\n", t);
+
+    PASS();
+}
+
 SUITE(suite) {
     RUN_TEST(simple_task_parse);
     RUN_TEST(simple_finished_task_parse);
@@ -98,6 +107,7 @@ SUITE(suite) {
     RUN_TEST(simple_finished_task_parse_with_priority);
     RUN_TEST(simple_task_parse_with_wrong_priority);
     RUN_TEST(simple_task_parse_without_priority);
+    RUN_TEST(todotxt_build_time_test);
 }
 
 GREATEST_MAIN_DEFS();

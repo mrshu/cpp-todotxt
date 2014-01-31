@@ -5,6 +5,7 @@
 #include <cstring>
 #include <cctype>
 #include <ctime>
+#include <cstdio>
 
 typedef struct TodotxtTask {
     int id;
@@ -20,4 +21,5 @@ typedef TodotxtTask* TodotxtTasks;
 
 TodotxtTask todotxt_parse_task(const char* todo, int id);
 void todotxt_free_task(TodotxtTask *task);
+time_t todotxt_build_time(char* time);
 #endif
