@@ -95,7 +95,7 @@ TEST todotxt_build_time_test(void) {
     char time[] = "2013-12-30";
     time_t t = todotxt_build_time(time);
 
-    printf("%ld\n", t);
+    ASSERT_EQ(t, 1388358000);
 
     PASS();
 }
