@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <cctype>
+#include <ctime>
 
 typedef struct TodotxtTask {
     int id;
