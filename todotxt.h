@@ -11,6 +11,8 @@ typedef struct TodotxtTask {
     bool finished;
     char* raw_todo;
     char* todo;
+    time_t create_date;
+    time_t finish_date;
 } TodotxtTask;
 
 typedef TodotxtTask* TodotxtTasks;
