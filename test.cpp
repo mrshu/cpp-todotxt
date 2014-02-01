@@ -49,6 +49,21 @@ TEST simple_task_parse_with_priority(void) {
     PASS();
 }
 
+TEST simple_task_parse_with_priority_and_create_date(void) {
+    TodotxtTask task = todotxt_parse_task("(A) 2014-01-02 this is a task", 1);
+    ASSERT_EQ(task.id, 1);
+    ASSERT_EQ(task.finished, false);
+    ASSERT_STR_EQ(task.raw_todo, "(A) 2014-01-02 this is a task");
+    ASSERT_STR_EQ(task.todo, "this is a task");
+    ASSERT_EQ(task.priority, 'A');
+    ASSERT_EQ(task.create_date, 1388617200);
+
+    delete task.raw_todo;
+    delete task.todo;
+
+    PASS();
+}
+
 TEST simple_finished_task_parse_with_priority(void) {
     TodotxtTask task = todotxt_parse_task("x (A) this is a very important task", 1);
     ASSERT_EQ(task.id, 1);
@@ -110,6 +125,7 @@ SUITE(suite) {
     RUN_TEST(simple_finished_task_parse);
     RUN_TEST(simple_task_parse_with_priority);
     RUN_TEST(simple_finished_task_parse_with_priority);
+    RUN_TEST(simple_task_parse_with_priority_and_create_date);
     RUN_TEST(simple_task_parse_with_wrong_priority);
     RUN_TEST(simple_task_parse_without_priority);
     RUN_TEST(todotxt_build_time_test);

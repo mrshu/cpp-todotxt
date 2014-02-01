@@ -25,10 +25,23 @@ TodotxtTask todotxt_parse_task(const char* todo, int id) {
         }
     }
 
-  //if (strlen(todo) > 11) {
-  //    tm time;
+    if (strlen(todo) > 11) {
+        if (todo[10] == ' ') {
+            char* time = new char[11];
+            memcpy(time, todo, 10);
+            time[10] = '\0';
 
-  //}
+            task.create_date = todotxt_build_time(time);
+            delete time;
+
+            if (task.create_date !=  -1) {
+                todo += 11;
+            }
+
+        } else {
+            task.create_date = -1;
+        }
+    }
 
     int todo_len = strlen(todo) + 1;
     task.todo = new char[todo_len + 1];
