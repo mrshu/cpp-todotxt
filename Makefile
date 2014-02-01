@@ -1,4 +1,4 @@
-CC=g++ -g -Wall -lm
+CC=g++ -g -Wall -Wpedantic -lm
 
 %.o: %.cpp
 	$(CC) -c -o $@ $< $(OFLAGS)

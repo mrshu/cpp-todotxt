@@ -97,6 +97,11 @@ TEST todotxt_build_time_test(void) {
 
     ASSERT_EQ(t, 1388358000);
 
+    char another_time[] = "something";
+    t = todotxt_build_time(another_time);
+
+    ASSERT_EQ(t, -1);
+
     PASS();
 }
 

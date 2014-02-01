@@ -41,12 +41,14 @@ time_t todotxt_build_time(char* time) {
     struct tm Tm;
     memset(&Tm, 0, sizeof(Tm));
 
-    sscanf(time, "%d-%d-%d", &Tm.tm_year, &Tm.tm_mon, &Tm.tm_mday);
+    if (sscanf(time, "%d-%d-%d", &Tm.tm_year, &Tm.tm_mon, &Tm.tm_mday) == 3) {
+        Tm.tm_year -= 1900;
+        Tm.tm_mon -= 1;
 
-    Tm.tm_year -= 1900;
-    Tm.tm_mon -= 1;
-
-    return mktime(&Tm);
+        return mktime(&Tm);
+    } else {
+        return -1;
+    }
 }
 
 void todotxt_free_task(TodotxtTask *task) {
