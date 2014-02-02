@@ -16,6 +16,8 @@ TEST simple_task_parse(void) {
     ASSERT_STR_EQ(task.raw_todo, "this is an important task");
     ASSERT_STR_EQ(task.todo, "this is an important task");
 
+    ASSERT_EQ(task.priority, '^');
+
     delete task.raw_todo;
     delete task.todo;
 
@@ -28,6 +30,8 @@ TEST simple_finished_task_parse(void) {
     ASSERT_EQ(task.finished, true);
     ASSERT_STR_EQ(task.raw_todo, "x this is an important task");
     ASSERT_STR_EQ(task.todo, "this is an important task");
+
+    ASSERT_EQ(task.priority, '^');
 
     delete task.raw_todo;
     delete task.todo;
